@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace Server
 {
+    /// <summary>
+    /// Inherits Form - GUI for server managment
+    /// </summary>
     public partial class ServerView : Form
     {
         public ServerView()

@@ -9,10 +9,17 @@ using WebSocketSharp.Server;
 
 namespace Server
 {
+    /// <summary>
+    /// Inherits WebSocketBehavior 
+    /// </summary>
     public class ServerModel : WebSocketBehavior
     {
-        public ValidateCredsDel validateCreds;
+        public ValidateCredsDel validateCreds; // Delegate
 
+        /// <summary>
+        /// Overrides OnMessage to parse login request 
+        /// </summary>
+        /// <param name="e"> Event </param>
         protected override void OnMessage(MessageEventArgs e)
         {
             string[] tokens = e.Data.Split(':');
@@ -27,6 +34,10 @@ namespace Server
             validateCreds(user, pass, checkAdmin, createUser);
         }
 
+        /// <summary>
+        /// Sends out the Valid or Invalid messages
+        /// </summary>
+        /// <param name="result"> Is the thing were checking for to see if login correct </param>
         public void sendResponse(bool result) 
         {
             if (result)

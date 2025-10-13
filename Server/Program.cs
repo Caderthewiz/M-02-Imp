@@ -8,8 +8,8 @@ using WebSocketSharp.Server;
 
 namespace Server
 {
-    public delegate void ValidateCredsDel(string user, string password, bool checkAdmin, bool createUser);
-    public delegate bool CheckCredsDel(string user, string password, bool checkAdmin, bool createUser);
+    public delegate void ValidateCredsDel(string user, string password, bool checkAdmin, bool createUser); // Delegate 
+    public delegate bool CheckCredsDel(string user, string password, bool checkAdmin, bool createUser); // Delegate
 
     internal static class Program
     {
