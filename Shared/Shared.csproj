@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FEFB46BF-0AB5-4425-B455-C99F3C0B4974}</ProjectGuid>
+    <ProjectGuid>{5A7BD0B6-2405-49A7-A644-4210DCAF3E42}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Client</RootNamespace>
-    <AssemblyName>Client</AssemblyName>
+    <RootNamespace>Shared</RootNamespace>
+    <AssemblyName>Shared</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -49,19 +49,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientController.cs" />
-    <Compile Include="ClientCommsController.cs" />
-    <Compile Include="ClientLoginController.cs" />
-    <Compile Include="ClientView.cs">
+    <Compile Include="LoginController.cs" />
+    <Compile Include="LoginModel.cs" />
+    <Compile Include="LoginView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClientView.Designer.cs">
-      <DependentUpon>ClientView.cs</DependentUpon>
+    <Compile Include="LoginView.Designer.cs">
+      <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ClientView.resx">
-      <DependentUpon>ClientView.cs</DependentUpon>
+    <Compile Include="State.cs" />
+    <EmbeddedResource Include="LoginView.resx">
+      <DependentUpon>LoginView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

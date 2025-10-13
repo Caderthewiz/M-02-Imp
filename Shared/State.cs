@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Client
+namespace Shared
 {
     public enum State
     {
@@ -13,6 +13,7 @@ namespace Client
         GOTUSERNAME,
         GOTPASSWORD,
         SUBMIT,
+        CREATEUSER,
         SUCCESS,
         DECLINED,
         EXIT
