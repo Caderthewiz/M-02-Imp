@@ -9,6 +9,10 @@ using Newtonsoft.Json;
 namespace Server
 {
     //Refactor to use JSON for credentials storage
+
+    /// <summary>
+    /// Stores credentials (List<User>) and reads/writes JSON
+    /// </summary>
     public class CredentialsM
     {
         private List<User> users;
@@ -19,6 +23,14 @@ namespace Server
             LoadCredentials();
         }
 
+        /// <summary>
+        /// Main method for handling login and user creation
+        /// </summary>
+        /// <param name="user"> user to be added to list </param>
+        /// <param name="pass"> the password to be added to list </param>
+        /// <param name="checkAdmin"> bool check for if admin </param>
+        /// <param name="createUser"> creates a user instead of logging in </param>
+        /// <returns> It either checks if a user’s credentials are valid or creates a new user </returns>
         public bool HandleCredsCheck(string user, string pass, bool checkAdmin, bool createUser) 
         {
             if (createUser) 
@@ -41,6 +53,9 @@ namespace Server
             return false;
         }
 
+        /// <summary>
+        /// Loads the list of users from a JSON file (credentials.json) when the app starts
+        /// </summary>
         private void LoadCredentials() 
         {
             if (File.Exists(filePath))
@@ -54,6 +69,9 @@ namespace Server
             }
         }
 
+        /// <summary>
+        /// Saves the current users list to credentials.json
+        /// </summary>
         private void WriteCredentials()
         {
             string json = JsonConvert.SerializeObject(users, Formatting.Indented);

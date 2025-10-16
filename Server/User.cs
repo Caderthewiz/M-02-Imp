@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Server
 {
+    /// <summary>
+    /// Properties Username, Password and IsAdmin
+    /// Simple data class for login stuff
+    /// </summary>
     public class User
     {
         public string Username { get; }

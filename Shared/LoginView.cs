@@ -12,15 +12,21 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Shared
 {
+    /// <summary>
+    /// LoginView is the GUI layer.
+    /// Receives controller instructions via HandleUpdateUI.
+    /// Sends user actions to the controller via input delegate.
+    /// </summary>
     public partial class LoginView : Form
     {
-        public InputDel input;
+        public InputDel input; // Delegate to pass user input to controller
 
         public LoginView()
         {
-            InitializeComponent();
+            InitializeComponent(); // Sets up the UI elements
         }
 
+        // Updates the UI depending on the current state
         public void HandleUpdateUI(State state)
         {
             switch (state)
@@ -64,6 +70,7 @@ namespace Shared
             }
         }
 
+        // Event when Login button is clicked
         private void LoginBtn_Click(object sender, EventArgs e)
         {
             string user = UserTb.Text;
@@ -73,6 +80,8 @@ namespace Shared
 
             input(State.SUBMIT, msg);
         }
+
+        // Event when Create User button is clicked
         private void CreateUserBtn_Click(object sender, EventArgs e)
         {
             string user = UserTb.Text;
@@ -83,12 +92,13 @@ namespace Shared
             input(State.CREATEUSER, msg);
         }
 
-
+        // Event when username text changes
         private void UserTb_TextChanged(object sender, EventArgs e)
         {
             input(State.GOTUSERNAME, "");
         }
 
+        // Event when password text changes
         private void PasswordTb_TextChanged(object sender, EventArgs e)
         {
             LoginBtn.Enabled = true;
@@ -97,7 +107,7 @@ namespace Shared
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            input(State.START, "");
+            input(State.START, ""); // Initialize UI when form is shown
         }
     }
 }
