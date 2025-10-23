@@ -22,14 +22,22 @@ namespace Server
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            ServerModel sModel = new ServerModel();
+            /*ServerModel sModel = new ServerModel();
             ServerController sController = new ServerController(sModel);
             CredentialsM credentialsM = new CredentialsM();
 
             sModel.validateCreds = sController.HandleValidation;
-            sController.checkCreds = credentialsM.HandleCredsCheck;
+            sController.checkCreds = credentialsM.HandleCredsCheck;*/
 
-            WebSocketServer wss = new WebSocketServer("");
+            var credentialsM = new CredentialsM();
+
+            WebSocketServer wss = new WebSocketServer("ws://127.0.0.1:8080");
+            wss.AddWebSocketService<ServerModel>("/login", svc =>
+            {
+                var controller = new ServerController(svc);
+                svc.validateCreds = controller.HandleValidation;
+                controller.checkCreds = credentialsM.HandleCredsCheck;
+            });
             wss.Start();
 
             Application.Run(new ServerView());

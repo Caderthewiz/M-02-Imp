@@ -42,6 +42,11 @@ namespace Shared
                 case State.CREATEUSER:
                     validateLoginInfo(msg); // Send new user info to create account
                     break;
+
+                case State.SUBMIT:
+                    validateLoginInfo(msg);
+                    updateUI(State.GOTPASSWORD);
+                    break;
                 
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
