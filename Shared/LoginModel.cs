@@ -19,7 +19,7 @@ namespace Shared
 
         public LoginModel()
         {
-            ws = ws = new WebSocket("ws://localhost:8080"); // Connect to server (URL should be provided) ... URL?
+            ws = new WebSocket("ws://127.0.0.1:8080/login"); // Connect to server (URL should be provided) ... URL?
             ws.OnMessage += MsgFromServer; // Attach message handler
             ws.Connect(); // Connect to server
         }
